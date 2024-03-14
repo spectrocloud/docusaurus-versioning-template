@@ -100,7 +100,7 @@ updateVersionsObject(mainDocsVersionsObject);
 const updatedCode = generate(ast).code;
 try {
   // Lastly, this is where the new config object is written to the temp.docusaurus.config.js file.
-  fs.writeFileSync(`${tempDirectory}/temp.docusaurus.config.ts`, updatedCode);
+  fs.writeFileSync(`${tempDirectory}/temp.docusaurus.config.js`, updatedCode);
 } catch (err) {
-  console.error("Could not write to temp.docusaurus.config.ts:", err);
+  console.error("Could not write to temp.docusaurus.config.js:", err);
 }
