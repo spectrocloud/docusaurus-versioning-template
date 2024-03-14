@@ -26,4 +26,4 @@ versions-ci: ## Create Docusarus content versions in a GitHub Actions CI environ
 clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf versions.json versioned_docs versioned_sidebars
-	git checkout -- docusaurus.config.ts static/robots.txt
+	git checkout -- docusaurus.config.js static/robots.txt
