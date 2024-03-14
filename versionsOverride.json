@@ -1,1 +1,7 @@
-{}
+[
+  {
+    "version": "1.0.x",
+    "banner": "none",
+    "label": "v1.0.x and prior"
+  }
+]
