@@ -1,0 +1,12 @@
+{
+  "repoOwner": "yourOrg",
+  "repoName": "yourRepository",
+  "editor": "code",
+
+  "targetBranchChoices": ["main"],
+
+  "autoMerge": true,
+  "autoMergeMethod": "squash",
+
+  "branchLabelMapping": { "^backport-(.+)$": "$1" }
+}

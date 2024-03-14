@@ -1,0 +1,38 @@
+name: Release to Production
+
+# Run this workflow every time a new commit is pushed to the master branch
+# or a version branch (e.g. version-4-0)
+
+on:
+  push:
+    branches:
+      - "main"
+
+concurrency:
+  group: production-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  # This is the default workflow that uses the self-hosted runner. The self-hosted runner is slower than the GitHub-hosted large runner, but it does not incurr additional charges.
+  build:
+    name: Build Website
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: "main"
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - run: npm ci
+
+      - name: Compile
+        run: |
+          make versions-ci
+          make build
