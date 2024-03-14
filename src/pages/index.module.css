@@ -21,3 +21,8 @@
   align-items: center;
   justify-content: center;
 }
+
+.version {
+  color: red;
+  text-decoration: white underline;
+}

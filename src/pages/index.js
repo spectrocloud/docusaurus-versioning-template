@@ -18,7 +18,19 @@ function HomepageHeader() {
         </Heading>
         <img src="/img/favicon.png"></img>
         <h2>By Spectro Cloud©</h2>
+
+        <h3 className={styles.version}>Version 2.0</h3>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+
+        <bold></bold>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/misc/jokes"
+          >
+            Check out the new jokes 🤣
+          </Link>
+        </div>
       </div>
     </header>
   );
