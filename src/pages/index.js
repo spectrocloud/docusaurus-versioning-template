@@ -11,7 +11,7 @@ function HomepageHeader() {
   const { siteConfig } = useDocusaurusContext();
 
   return (
-    <header className={clsx("hero hero--primary", styles.heroBanner)}>
+    <header className={clsx("hero hero--secondary", styles.heroBanner)}>
       <div className="container">
         <Heading as="h1" className="hero__title">
           {siteConfig.title}
@@ -19,7 +19,7 @@ function HomepageHeader() {
         <img src="/img/favicon.png"></img>
         <h2>By Spectro Cloud©</h2>
 
-        <h3 className={styles.version}>Version 2.0</h3>
+        <h3 className={styles.version}>Version 2.1</h3>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
 
         <bold></bold>
