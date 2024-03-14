@@ -10,9 +10,9 @@ const ArchivedVersions = require("./archiveVersions.json");
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Docusaurus with Versioning using git",
-  tagline: "Docusarus and git get along",
-  favicon: "img/favicon.ico",
+  title: "When Docs and a Dinosaur Git Along",
+  tagline: "Learn how to use Docusaurus with a Git versioning strategy",
+  favicon: "img/favicon.png",
 
   // Set the production url of your site here
   url: "https://your-docusaurus-site.example.comm",
@@ -51,7 +51,7 @@ const config = {
             },
           },
           editUrl:
-            "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/",
+            "https://github.com/spectrocloud/docusarus-versioning-template/blob/main/",
         },
         theme: {
           customCss: "./src/css/custom.css",
