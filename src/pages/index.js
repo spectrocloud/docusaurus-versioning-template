@@ -28,7 +28,7 @@ function HomepageHeader() {
             className="button button--secondary button--lg"
             to="/docs/versioning/"
           >
-            Learn more about versioning.
+            Click here for tips & tricks.
           </Link>
         </div>
       </div>
