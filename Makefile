@@ -1,5 +1,7 @@
 .PHONY: initialize start commit build versions
 
+DOCKER_IMAGE = "example"
+
 init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
@@ -27,3 +29,13 @@ clean-versions: ## Clean Docusarus content versions
 	@echo "cleaning versions"
 	rm -rf versions.json versioned_docs versioned_sidebars
 	git checkout -- docusaurus.config.js static/robots.txt
+
+## Docker
+
+docker-build: ## Build the Docker image
+	@echo "building Docker image"
+	docker build -t $(DOCKER_IMAGE) .
+
+docker-run: ## Run the Docker image
+	@echo "running Docker image"
+	docker run -p 3000:3000 -it $(DOCKER_IMAGE) bash
