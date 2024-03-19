@@ -40,7 +40,8 @@ echo "Current branch: $current_branch"
 echo "HEAD Branch: $HEAD"
 
 
-# Fetch all branches from the remote
+# Fetch all branches from the remote and filter for the version branches.
+# If your version branches are named differently, then you need to modify the regex pattern.
 git fetch -p origin
 branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 
