@@ -92,4 +92,4 @@ The following checklist will help you adopt this approach.
 
 - [ ] Review how to use the [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) command. You will encounter situations where you will have a merge conflict when backporting changes to older versions of the documentation. You will need to resolve these merge conflicts using `git cherry-pick`.
 
-- [ ] Review the [Frequently Asked Questions (FAQ)](./faq.md) for more information.
+- [ ] Review the [Frequently Asked Questions (FAQ)](https://github.com/spectrocloud/docusarus-versioning-template) for more information.
