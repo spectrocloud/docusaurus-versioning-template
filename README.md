@@ -103,8 +103,8 @@ echo "Running: npm run docusaurus docs:version $extracted_versionX"
 npm run docusaurus docs:version $extracted_versionX
 
 # Generate the API docs
-echo "Running: npm run generate-api-docs"
-npm run generate-api-docs
+echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
+npm run docusaurus docs:version:api $extracted_versionX
 ```
 
 You would have to make sure that the required temporary folders and files are created as well in the `versions.sh` script. Check out our production [`versions.sh`](https://github.com/spectrocloud/librarium/blob/master/scripts/versions.sh) script for an example of how we handle multiple plugins.
