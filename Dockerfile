@@ -1,6 +1,6 @@
 FROM node:18
 
-RUN apt update -y && \
+RUN apt update -y && apt upgrade -y && \
 groupadd -r appuser && useradd -r -g appuser -m appuser
 
 COPY --chown=appuser:appuser . /app 
