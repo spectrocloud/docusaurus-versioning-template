@@ -2,14 +2,14 @@
 
 # Docusarus Versioning with Git - Template
 
-This is a template for a Docusarus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we, at Spectro Cloud, chose to use Git for versioning.
+This is a template for a Docusarus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
 
 <p align="center">
   <img src="./static/img/readme-image.png" alt="Docusarus + heart with Spectro Cloud Astronaut + git" width="400"/>
 </p>
 
 > [!IMPORTANT]
-> This repository will not be actively maintained and was created for demonstration purposes only. We recommend you use this repository as a starting point and customize it to fit your needs.
+> This repository will not be actively maintained and was created for demonstration purposes only. We recommend you use this repository as a starting point to help you spark ideas on implementing versioning in your Docusarus site.
 
 ## Getting Started
 
@@ -42,7 +42,7 @@ Choose between the Docker or non-Docker setup. The Docker setup is recommended f
 
 4. Next, issue the command `make start` to start the development server.
 
-5. the command `make build` to build the site so that you can become familiar with the build process. If you want to preview the build, issue the command `npm run serve`.
+5. Use the command `make build` to build the site so that you can become familiar with the build process. If you want to preview the build, issue the `npm run serve` command.
 
 To exit the container, issue the command `exit` or press `Ctrl + C`.
 
@@ -51,29 +51,33 @@ To exit the container, issue the command `exit` or press `Ctrl + C`.
 
 ## Create a New Version
 
-To create a new version, use the git command `git checkout -b <name-of-branch>`. This will create a new branch and switch to it. At this point, once you are inside the new version branch, start making changes and commit them.
+To create a new version, use the git command `git checkout -b <name-of-branch>`. This will create a new branch and switch to it. Once you are inside the new version branch, start making changes and commit them.
 
-We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, make sure to update the [versions.sh](./scripts/versions.sh) script to reflect the new pattern.
+We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](./scripts/versions.sh) script to reflect the new pattern.
 
 ## Frequently Asked Questions (FAQ)
 
 ### ❓ How do I preview all versioned content locally?
 
-_Use the command `make versions` to generate all the versioned content. Then, use the command `make start` to start the development server. You can also preview the build using the command `make build` and then issue the command `npm run serve`._
+_Use the command `make versions` to generate all the versioned content. Then, use the `make start` command to start the development server. You can also preview the build using the command `make build` and then issue the command `npm run serve`._
 
 ### ❓ How do I remove all versioned content?
 
-_Use the command `make clean-versions` to remove all the versioned content._ This command removes the `versioned_docs` and `versioned_sidebars` directories. The command also removes the `versions.json` file, changes to the `docusaurus.config.js` file, and the the `static/robots.txt` file.
+\_Use the command `make clean-versions` to remove all the versioned content. This command removes the `versioned_docs` and `versioned_sidebars directories`. It also removes the `versions.json` file, changes to the `docusaurus.config.js` file, and the `static/robots.txt` file.
 
 ### ❓ How do you backport changes to older versions?
 
 You have a couple of options to backport changes to older versions.
 
-1. Create a new branch from the default banch, make the changes, commit and create a pull request. Add the label `auto-backport`, and select the labels that match the versions you want to backport the changes to. The [backport.yml](./.github/workflows/backport.yml) workflow will automatically backport the changes to the selected versions.
+1. Create a new branch from the default branch, make the changes, commit, and create a pull request. Add the label `auto-backport`, and select the labels that match the versions to which you want to backport the changes. The [backport.yml](./.github/workflows/backport.yml) workflow will automatically create a backport PR for each version. Merge the PRs to backport the changes.
 
-2. You can use the `git cherry-pick` command to pick a commit from a newer version and apply it to an older version. This approach is more common when the backport worflow is unable to create a backport PR due to merge conflicts.
+2. You can use the `git cherry-pick` command to pick a commit from a newer version and apply it to an older version. This approach is more common when the backport workflow cannot create a backport PR due to merge conflicts.
 
-3. If the change is only applicable to a specific version, you can make the change directly in the version branch and commit the change. Ideally, you do this through a pull request so that the change is reviewed.
+3. If the change applies only to a specific version, you can make it directly in the version branch and commit it. Ideally, you do this through a pull request so that the change is reviewed.
+
+### ❓ A backport PR failed to get created. What do I do?
+
+_The backport PR failed to get created because of a merge conflict. The simplest approach is to switch to the version branch and do a `git cherry-pick` of the commit that introduced the change. For example, if the merged PR created commit `1dee9d31fcf651ac5c0428254fd38b4783b94b53`, you would issue `git cherry-pick 1dee9d31fcf651ac5c0428254fd38b4783b94b53` and resolve any conflicts, ideally from an editor. Addresses the issues, commits the changes, and pushes them up. We prefer to create a new branch when doing cherry-picks versus doing it from the version branch. We then merge the PR into the version branch to ensure we are not introducing any changes that could break the build._
 
 ### ❓ I started the local development server, but I don't see the versioned content. What's wrong?
 
@@ -81,8 +85,47 @@ _You need to generate the versioned content first. Use the command `make version
 
 ### ❓ I tried to generate the versioned content, but I got an error. What's wrong?
 
-Ensure there are no uncomitted changes in your current branch. The [](./scripts/versions.sh) script will checkout each version branch and generate the versioned content for that respective branch. If there are uncomitted changes, the script will fail due to git errors.
+Ensure there are no uncommitted changes in your current branch. The [versions.sh](./scripts/versions.sh) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
 
 ### ❓ How come this is not for Docusaurs with TypeScript?
 
-No reasons, it's just not the confiruation we use for Docusarus at Spectro Cloud. But, there is no reasons why you can't use TypeScript with this template. However, you will need to make some changes to the configuration files to use TypeScript.
+There are no reasons; it's just not the configuration we use for Docusarus at Spectro Cloud. But there are no reasons why you can't use TypeScript with this template. However, you will need to change the configuration files to use TypeScript.
+
+### ❓ I have multiple plugins in my Docusaurus site. How do I handle this?
+
+Multiple plugins can be added to this solution. The most important thing is to ensure the `versions.sh` and the `update_docusarus_config.js` are updated to target these plugins. For example, if you have a plugin called `api`, then in the `versions.sh` you would add an entry to create the versioned content for the `api` plugin.
+
+```shelll
+# Run the npm command
+echo "Running: npm run docusaurus docs:version $extracted_versionX"
+npm run docusaurus docs:version $extracted_versionX
+
+# Generate the API docs
+echo "Running: npm run generate-api-docs"
+npm run generate-api-docs
+```
+
+You would have to make sure that the required temporary folders and files are created as well in the `versions.sh` script. Check out our production [`versions.sh`](https://github.com/spectrocloud/librarium/blob/master/scripts/versions.sh) script for an example of how we handle multiple plugins.
+
+The `update_docusarus_config.js` script must also be updated to handle the multiple plugins. For example, if you have a plugin called `api`, then you would need to add an entry to the `update_docusarus_config.js` script to update the `api` plugin. Check out our production [`update_docusarus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script. In our production script, we have a function for each plugin that we want to update.
+
+```js
+const apiDocsVersionsObject = findApiDocsPluginVersionsObject();
+if (apiDocsVersionsObject) {
+  updateVersionsObject(apiDocsVersionsObject);
+}
+```
+
+The `findApiDocsPluginVersionsObject` locates the `api` plugin object in the `docusaurus.config.js` file. The `updateVersionsObject` function updates the `api` plugin object with the versioned content. We use the `versionsOverride.json` file to override the `label`, `version`, and `banner` properties.
+
+For example, in our Spectro Cloud production's site `version-3-4` branch we change the `label` to display `v3.4.x and prior`. This is the value we use in the `versionsOverride.json` file to override default behavior.
+
+```json
+[
+  {
+    "version": "3.4.x",
+    "banner": "none",
+    "label": "v3.4.x and prior"
+  }
+]
+```
