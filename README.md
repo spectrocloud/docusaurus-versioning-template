@@ -4,6 +4,8 @@
 
 This is a template for a Docusarus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
 
+Additionally, we recommend you start the local development server and read the Versioning Tips & Tricks section to learn more about this versrioning approach. We have also included a [FAQ section](#frequently-asked-questions-faq) to address common questions and issues.
+
 <p align="center">
   <img src="./static/img/readme-image.png" alt="Docusarus + heart with Spectro Cloud Astronaut + git" width="400"/>
 </p>
@@ -129,3 +131,31 @@ For example, in our Spectro Cloud production's site `version-3-4` branch we chan
   }
 ]
 ```
+
+### ❓ Do I need to created versioned content in every build?
+
+The short answer is no, and it's also not something we recommend, especially for larger documentation sites. We recommend you only generate the versioned content when you need to preview it locally or when you are publishing content to production.
+
+Use the `make versions` command to preview versioned content locally. This way, you can generate the versioned content when you need it and not have to worry about it being generated every time you build the site.
+
+The versioning content is only generated after you have merged a PR into the default branch. Reviewing the GitHub Actions [release.yaml](./.github/workflows/release.yaml) workflow file, you will notice that the `make versions-ci` command is issued before the `make build` command.
+
+### ❓ How do you manage `robots.txt` for the documentation site?
+
+We use the `scripts/generate_robots.sh` script to generate the `robots.txt`. The script is triggered by the `scripts/version.sh` script.
+
+```txt
+User-agent: *
+Disallow: /4.2.x/
+Disallow: /4.1.x/
+Allow: /$
+Sitemap: https://docs.spectrocloud.com/sitemap.xml
+```
+
+We use the `Disallow` directive to prevent search engines from indexing the versioned content. We use the `Allow` directive to allow search engines to index the root of the documentation site. The disallow matches the slug of the versioned content. For example, `Disallow: /4.2.x/` prevents search engines from indexing the `4.2.x` versioned content.
+
+Because we are creating new releases and versions frequently, we chose to automate the generation of the `robots.txt` file. This way, we don't have to worry about manually updating the `robots.txt` file every time we create a new version.
+
+### ❓ Will this affect custom components and styles?
+
+Most of the time, the answer is no. However, if you are backporting content that requires a custom component or style, you will need to ensure that the component or style is available in the version branch. If the component or style is not available, you will need to backport the component or style to the version branch.
