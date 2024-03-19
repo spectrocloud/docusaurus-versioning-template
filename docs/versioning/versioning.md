@@ -70,11 +70,11 @@ In our experience, adopting this approach has been a relatively smooth experienc
 
 The following checklist will help you adopt this approach.
 
-- [ ] Identify the naming pattern for your version branches. We use the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](./scripts/versions.sh) script to reflect the new pattern.
+- [ ] Identify the naming pattern for your version branches. We use the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/scripts/versions.sh) script to reflect the new pattern.
 
-- [ ] Create the label `auto-backport` in your repository. This label triggers the backport action. If you choose a different label name, update the [backport.yml](./.github/workflows/backport.yml) workflow to reflect the new label name.
+- [ ] Create the label `auto-backport` in your repository. This label triggers the backport action. If you choose a different label name, update the [backport.yml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/backport.yaml) workflow to reflect the new label name.
 
-- [ ] Create the backport labels for each version branch. We use the pattern `backport-version-<version-number>`. For example, `backport-version-1-1`. If you go with a different pattern, update the [backport.yml](./.github/workflows/backport.yml) workflow to reflect the new pattern.
+- [ ] Create the backport labels for each version branch. We use the pattern `backport-version-<version-number>`. For example, `backport-version-1-1`. If you go with a different pattern, update the [backport.yml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/backport.yaml) workflow to reflect the new pattern.
 
   :::info
 
