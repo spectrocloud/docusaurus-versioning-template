@@ -159,3 +159,21 @@ Because we are creating new releases and versions frequently, we chose to automa
 ### ❓ Will this affect custom components and styles?
 
 Most of the time, the answer is no. However, if you are backporting content that requires a custom component or style, you will need to ensure that the component or style is available in the version branch. If the component or style is not available, you will need to backport the component or style to the version branch.
+
+### ❓ I am ready to archive a version branch and use an external URL. How do I do this?
+
+First, add an entry in the [**archiveVersions.json**](./archiveVersions.json) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration. 
+
+```json
+{
+  "v4.0.x": "https://version-4-0.legacy.docs.spectrocloud.com",
+  "v3.4.x and prior": "https://version-3-4.legacy.docs.spectrocloud.com"
+}
+```
+
+The next step is to update **versions.sh** script and specify the version branch to skip. Open the file and navigate to line `28`. Add your version branch in the `exclude_branches` variable.
+
+```shell
+exclude_branches=("version-1-0 version-1-1")
+```
+Save your changes and commit the changes the changes to your main branch. Next time you issue `make versions`, the archived version will no longer be part of the build. Docusaurs will still display the version branch in the version drop-down menu but it will now be an external URL. 
