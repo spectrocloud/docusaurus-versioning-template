@@ -71,11 +71,11 @@ _Use the command `make versions` to generate all the versioned content. Then, us
 
 You have a couple of options to backport changes to older versions.
 
-1. Create a new branch from the default branch, make the changes, commit, and create a pull request. Add the label `auto-backport`, and select the labels that match the versions to which you want to backport the changes. The [backport.yml](./.github/workflows/backport.yml) workflow will automatically create a backport PR for each version. Merge the PRs to backport the changes.
+1. Create a new branch from the default branch, make the changes, commit, and create a pull request. Add the label `auto-backport`, and select the labels that match the versions to which you want to backport the changes. The [backport.yml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/backport.yaml) workflow will automatically create a backport PR for each version. Merge the PRs to backport the changes.
 
 2. You can use the `git cherry-pick` command to pick a commit from a newer version and apply it to an older version. This approach is more common when the backport workflow cannot create a backport PR due to merge conflicts.
 
-3. If the change applies only to a specific version, you can make it directly in the version branch and commit it. Ideally, you do this through a pull request so that the change is reviewed.
+3. If the change applies only to a specific version, you can commit it directly in the version branch. Ideally, you do this through a pull request so that the change is reviewed.
 
 ### ❓ A backport PR failed to get created. What do I do?
 
@@ -87,7 +87,7 @@ _You need to generate the versioned content first. Use the command `make version
 
 ### ❓ I tried to generate the versioned content, but I got an error. What's wrong?
 
-Ensure there are no uncommitted changes in your current branch. The [versions.sh](./scripts/versions.sh) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
+Ensure there are no uncommitted changes in your current branch. The [versions.sh]([./scripts/versions.sh](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/scripts/versions.sh)) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
 
 ### ❓ How come this is not for Docusaurs with TypeScript?
 
@@ -138,7 +138,7 @@ The short answer is no, and it's also not something we recommend, especially for
 
 Use the `make versions` command to preview versioned content locally. This way, you can generate the versioned content when you need it and not have to worry about it being generated every time you build the site.
 
-The versioning content is only generated after you have merged a PR into the default branch. Reviewing the GitHub Actions [release.yaml](./.github/workflows/release.yaml) workflow file, you will notice that the `make versions-ci` command is issued before the `make build` command.
+The versioning content is only generated after you have merged a PR into the default branch. Reviewing the GitHub Actions [release.yaml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/release.yaml) workflow file, you will notice that the `make versions-ci` command is issued before the `make build` command.
 
 ### ❓ How do you manage `robots.txt` for the documentation site?
 
@@ -162,7 +162,7 @@ Most of the time, the answer is no. However, if you are backporting content that
 
 ### ❓ I am ready to archive a version branch and use an external URL. How do I do this?
 
-First, add an entry in the [**archiveVersions.json**](./archiveVersions.json) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration. 
+First, add an entry in the [**archiveVersions.json**]([./archiveVersions.json](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/archiveVersions.json)) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration. 
 
 ```json
 {
