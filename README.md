@@ -4,7 +4,7 @@
 
 This is a template for a Docusarus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
 
-Additionally, we recommend you start the local development server and read the Versioning Tips & Tricks section to learn more about this versrioning approach. We have also included a [FAQ section](#frequently-asked-questions-faq) to address common questions and issues.
+Additionally, we recommend you start the local development server and read the Versioning Tips & Tricks section to learn more about this versioning approach. We have also included a [FAQ section](#frequently-asked-questions-faq) to address common questions and issues.
 
 <p align="center">
   <img src="./static/img/readme-image.png" alt="Docusarus + heart with Spectro Cloud Astronaut + git" width="400"/>
@@ -93,7 +93,7 @@ Ensure there are no uncommitted changes in your current branch. The [versions.sh
 
 There are no reasons; it's just not the configuration we use for Docusarus at Spectro Cloud. But there are no reasons why you can't use TypeScript with this template. However, you will need to change the configuration files to use TypeScript.
 
-### ❓ I have multiple plugins in my Docusaurus site. How do I handle this?
+### ❓ I have multiple plugins on my Docusaurus site. How do I handle this?
 
 Multiple plugins can be added to this solution. The most important thing is to ensure the `versions.sh` and the `update_docusarus_config.js` are updated to target these plugins. For example, if you have a plugin called `api`, then in the `versions.sh` you would add an entry to create the versioned content for the `api` plugin.
 
@@ -120,7 +120,7 @@ if (apiDocsVersionsObject) {
 
 The `findApiDocsPluginVersionsObject` locates the `api` plugin object in the `docusaurus.config.js` file. The `updateVersionsObject` function updates the `api` plugin object with the versioned content. We use the `versionsOverride.json` file to override the `label`, `version`, and `banner` properties.
 
-For example, in our Spectro Cloud production's site `version-3-4` branch we change the `label` to display `v3.4.x and prior`. This is the value we use in the `versionsOverride.json` file to override default behavior.
+For example, in our Spectro Cloud production's site `version-3-4` branch we change the `label` to display `v3.4.x and prior`. This is the value we use in the `versionsOverride.json` file to override the default behavior.
 
 ```json
 [
@@ -132,7 +132,7 @@ For example, in our Spectro Cloud production's site `version-3-4` branch we chan
 ]
 ```
 
-### ❓ Do I need to created versioned content in every build?
+### ❓ Do I need to create versioned content in every build?
 
 The short answer is no, and it's also not something we recommend, especially for larger documentation sites. We recommend you only generate the versioned content when you need to preview it locally or when you are publishing content to production.
 
@@ -176,4 +176,9 @@ The next step is to update **versions.sh** script and specify the version branch
 ```shell
 exclude_branches=("version-1-0 version-1-1")
 ```
-Save your changes and commit the changes the changes to your main branch. Next time you issue `make versions`, the archived version will no longer be part of the build. Docusaurs will still display the version branch in the version drop-down menu but it will now be an external URL. 
+Save your changes and commit them to your main branch. Next time you issue `make versions`, the archived version will no longer be part of the build. Docusaurs will still display the version branch in the version drop-down menu but it will now be an external URL. 
+
+
+### ❓ I noticed you squash commits. How come?
+
+When it comes to backporting, it's easier to only backport a single commit versus a set of commits. This is especially true when the backport actions are unable to create a pull request due to merge conflicts. In those scenarios, you have to cherry-pick. We prefer to cherry-pick a single commit. 
