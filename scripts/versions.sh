@@ -147,10 +147,10 @@ mv $tempdir/temp_versions.json $baseDir/versions.json
 
 
 echo "Updating docusarus.config.js through the node script."
-node $baseDir/scripts/update_docusarus_config.js $tempdir $baseDir
+node $baseDir/scripts/update_docusaurus_config.js $tempdir $baseDir
 
 if [ $? -ne 0 ]; then
-  echo "Error updating docusarus.config.js"
+  echo "Error updating docusaurus.config.js"
   exit 1
 fi
 
