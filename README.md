@@ -1,15 +1,17 @@
-# Docusarus Versioning with Git - Template
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
 
-This is a template for a Docusarus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
+# Docusaurus Versioning with Git - Template
+
+This is a template for a Docusaurus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
 
 Additionally, we recommend you start the local development server and read the Versioning Tips & Tricks section to learn more about this versioning approach. We have also included a [FAQ section](#frequently-asked-questions-faq) to address common questions and issues.
 
 <p align="center">
-  <img src="./static/img/readme-image.png" alt="Docusarus + heart with Spectro Cloud Astronaut + git" width="400"/>
+  <img src="./static/img/readme-image.png" alt="docusaurus + heart with Spectro Cloud Astronaut + git" width="400"/>
 </p>
 
 > [!IMPORTANT]
-> This repository will not be actively maintained and was created for demonstration purposes only. We recommend you use this repository as a starting point to help you spark ideas on implementing versioning in your Docusarus site.
+> This repository will not be actively maintained and was created for demonstration purposes only. We recommend you use this repository as a starting point to help you spark ideas on implementing versioning in your Docusaurus site.
 
 ## Getting Started
 
@@ -69,7 +71,7 @@ _Use the command `make versions` to generate all the versioned content. Then, us
 
 You have a couple of options to backport changes to older versions.
 
-1. Create a new branch from the default branch, make the changes, commit, and create a pull request. Add the label `auto-backport`, and select the labels that match the versions to which you want to backport the changes. The [backport.yml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/backport.yaml) workflow will automatically create a backport PR for each version. Merge the PRs to backport the changes.
+1. Create a new branch from the default branch, make the changes, commit, and create a pull request. Add the label `auto-backport`, and select the labels that match the versions to which you want to backport the changes. The [backport.yml](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/.github/workflows/backport.yaml) workflow will automatically create a backport PR for each version. Merge the PRs to backport the changes.
 
 2. You can use the `git cherry-pick` command to pick a commit from a newer version and apply it to an older version. This approach is more common when the backport workflow cannot create a backport PR due to merge conflicts.
 
@@ -85,15 +87,15 @@ _You need to generate the versioned content first. Use the command `make version
 
 ### ❓ I tried to generate the versioned content, but I got an error. What's wrong?
 
-Ensure there are no uncommitted changes in your current branch. The [versions.sh](<[./scripts/versions.sh](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/scripts/versions.sh)>) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
+Ensure there are no uncommitted changes in your current branch. The [versions.sh](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/scripts/versions.sh) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
 
 ### ❓ How come this is not for Docusaurs with TypeScript?
 
-There are no reasons; it's just not the configuration we use for Docusarus at Spectro Cloud. But there are no reasons why you can't use TypeScript with this template. However, you will need to change the configuration files to use TypeScript.
+There are no reasons; it's just not the configuration we use for Docusaurus at Spectro Cloud. But there are no reasons why you can't use TypeScript with this template. However, you will need to change the configuration files to use TypeScript.
 
 ### ❓ I have multiple plugins on my Docusaurus site. How do I handle this?
 
-Multiple plugins can be added to this solution. The most important thing is to ensure the `versions.sh` and the `update_docusarus_config.js` are updated to target these plugins. For example, if you have a plugin called `api`, then in the `versions.sh` you would add an entry to create the versioned content for the `api` plugin.
+Multiple plugins can be added to this solution. The most important thing is to ensure the `versions.sh` and the `update_docusaurus_config.js` are updated to target these plugins. For example, if you have a plugin called `api`, then in the `versions.sh` you would add an entry to create the versioned content for the `api` plugin.
 
 ```shelll
 # Run the npm command
@@ -107,7 +109,7 @@ npm run docusaurus docs:version:api $extracted_versionX
 
 You would have to make sure that the required temporary folders and files are created as well in the `versions.sh` script. Check out our production [`versions.sh`](https://github.com/spectrocloud/librarium/blob/master/scripts/versions.sh) script for an example of how we handle multiple plugins.
 
-The `update_docusarus_config.js` script must also be updated to handle the multiple plugins. For example, if you have a plugin called `api`, then you would need to add an entry to the `update_docusarus_config.js` script to update the `api` plugin. Check out our production [`update_docusarus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script. In our production script, we have a function for each plugin that we want to update.
+The `update_docusaurus_config.js` script must also be updated to handle the multiple plugins. For example, if you have a plugin called `api`, then you would need to add an entry to the `update_docusaurus_config.js` script to update the `api` plugin. Check out our production [`update_docusaurus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script. In our production script, we have a function for each plugin that we want to update.
 
 ```js
 const apiDocsVersionsObject = findApiDocsPluginVersionsObject();
@@ -136,7 +138,7 @@ The short answer is no, and it's also not something we recommend, especially for
 
 Use the `make versions` command to preview versioned content locally. This way, you can generate the versioned content when you need it and not have to worry about it being generated every time you build the site.
 
-The versioning content is only generated after you have merged a PR into the default branch. Reviewing the GitHub Actions [release.yaml](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/.github/workflows/release.yaml) workflow file, you will notice that the `make versions-ci` command is issued before the `make build` command.
+The versioning content is only generated after you have merged a PR into the default branch. Reviewing the GitHub Actions [release.yaml](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/.github/workflows/release.yaml) workflow file, you will notice that the `make versions-ci` command is issued before the `make build` command.
 
 ### ❓ How do you manage `robots.txt` for the documentation site?
 
@@ -160,7 +162,7 @@ Most of the time, the answer is no. However, if you are backporting content that
 
 ### ❓ I am ready to archive a version branch and use an external URL. How do I do this?
 
-First, add an entry in the [**archiveVersions.json**](<[./archiveVersions.json](https://github.com/spectrocloud/docusarus-versioning-template/blob/main/archiveVersions.json)>) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration.
+First, add an entry in the [**archiveVersions.json**](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/archiveVersions.json) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration.
 
 ```json
 {
