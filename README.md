@@ -55,7 +55,7 @@ To exit the container, issue the command `exit` or press `Ctrl + C`.
 
 To create a new version, use the git command `git checkout -b <name-of-branch>`. This will create a new branch and switch to it. Once you are inside the new version branch, start making changes and commit them.
 
-We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](./scripts/versions.sh) script to reflect the new pattern.
+We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/scripts/versions.sh) script to reflect the new pattern.
 
 ## Frequently Asked Questions (FAQ)
 
@@ -65,7 +65,7 @@ _Use the command `make versions` to generate all the versioned content. Then, us
 
 ### ❓ How do I remove all versioned content?
 
-\_Use the command `make clean-versions` to remove all the versioned content. This command removes the `versioned_docs` and `versioned_sidebars directories`. It also removes the `versions.json` file, changes to the `docusaurus.config.js` file, and the `static/robots.txt` file.
+Use the command `make clean-versions` to remove all the versioned content. This command removes the `versioned_docs` and `versioned_sidebars directories`. It also removes the `versions.json` file, changes to the `docusaurus.config.js` file, and the `static/robots.txt` file.
 
 ### ❓ How do you backport changes to older versions?
 
@@ -87,7 +87,7 @@ _You need to generate the versioned content first. Use the command `make version
 
 ### ❓ I tried to generate the versioned content, but I got an error. What's wrong?
 
-Ensure there are no uncommitted changes in your current branch. The [versions.sh](<[./scripts/versions.sh](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/scripts/versions.sh)>) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
+Ensure there are no uncommitted changes in your current branch. The [versions.sh](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/scripts/versions.sh) script will check out each version branch and generate the versioned content for that respective branch. If there are uncommitted changes, the script will fail due to get errors.
 
 ### ❓ How come this is not for Docusaurs with TypeScript?
 
@@ -109,7 +109,7 @@ npm run docusaurus docs:version:api $extracted_versionX
 
 You would have to make sure that the required temporary folders and files are created as well in the `versions.sh` script. Check out our production [`versions.sh`](https://github.com/spectrocloud/librarium/blob/master/scripts/versions.sh) script for an example of how we handle multiple plugins.
 
-The `update_docusaurus_config.js` script must also be updated to handle the multiple plugins. For example, if you have a plugin called `api`, then you would need to add an entry to the `update_docusaurus_config.js` script to update the `api` plugin. Check out our production [`update_docusaurus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusaurus_config.js) script. In our production script, we have a function for each plugin that we want to update.
+The `update_docusaurus_config.js` script must also be updated to handle the multiple plugins. For example, if you have a plugin called `api`, then you would need to add an entry to the `update_docusaurus_config.js` script to update the `api` plugin. Check out our production [`update_docusaurus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script. In our production script, we have a function for each plugin that we want to update.
 
 ```js
 const apiDocsVersionsObject = findApiDocsPluginVersionsObject();
@@ -162,7 +162,7 @@ Most of the time, the answer is no. However, if you are backporting content that
 
 ### ❓ I am ready to archive a version branch and use an external URL. How do I do this?
 
-First, add an entry in the [**archiveVersions.json**](<[./archiveVersions.json](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/archiveVersions.json)>) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration.
+First, add an entry in the [**archiveVersions.json**](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/archiveVersions.json) for the branch you want to archive and no longer include in the build. Below is an example of our production configuration.
 
 ```json
 {
