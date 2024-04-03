@@ -10,7 +10,7 @@ sidebar_position: 10
 
 ## Number of Active Versions
 
-The official Docusarus documentation [recommends keeping the number of active versions to a minimum](https://docusaurus.io/docs/versioning#keep-the-number-of-versions-small) to less than 10. The larger the documentation base, the more active versions you have will impact your builds and your site's performance. We at Spectro Cloud have a maximum of three active versions at any given time. As we release new versions, we move older versions to an external domain, which is still accessible but not part of the main documentation site domain.
+The official Docusaurus documentation [recommends keeping the number of active versions to a minimum](https://docusaurus.io/docs/versioning#keep-the-number-of-versions-small) to less than 10. The larger the documentation base, the more active versions you have will impact your builds and your site's performance. We at Spectro Cloud have a maximum of three active versions at any given time. As we release new versions, we move older versions to an external domain, which is still accessible but not part of the main documentation site domain.
 
 :::info
 
@@ -86,10 +86,10 @@ The following checklist will help you adopt this approach.
 
 - [ ] Review the `scripts/versions.sh` script and update it to handle your version branches. This script is used to generate the versioned content for each version branch.
 
-- [ ] Review the `scripts/update_docusarus_config.js` script and update it to handle your plugins. This script updates the `docusaurus.config.js` file to handle your version branches. The script in this template is configured to handle the `docs` plugin. If you have multiple plugins, you must update this script to handle them. Check out our production [`update_docusarus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script for an example of how we handle multiple plugins.
+- [ ] Review the `scripts/update_docusaurus_config.js` script and update it to handle your plugins. This script updates the `docusaurus.config.js` file to handle your version branches. The script in this template is configured to handle the `docs` plugin. If you have multiple plugins, you must update this script to handle them. Check out our production [`update_docusaurus_config.js`](https://github.com/spectrocloud/librarium/blob/master/scripts/update_docusarus_config.js) script for an example of how we handle multiple plugins.
 
 - [ ] Review the `scripts/generate_robots.sh` script and verify you are comfortable with the robots.txt file it generates. This script is used to generate the `robots.txt` that resides in the `static` directory. The `robots.txt` file is used to control the behavior of web crawlers. The `robots.txt` file this script generates is configured to disallow web crawlers from indexing the version branches. If you are comfortable with the `robots.txt` file, use the script as is. If you are uncomfortable with the `robots.txt` file, update the script to generate a `robots.txt` configuration you prefer.
 
 - [ ] Review how to use the [`git cherry-pick`](https://git-scm.com/docs/git-cherry-pick) command. You will encounter situations where you will have a merge conflict when backporting changes to older versions of the documentation. You will need to resolve these merge conflicts using `git cherry-pick`.
 
-- [ ] Review the [Frequently Asked Questions (FAQ)](https://github.com/spectrocloud/docusarus-versioning-template) for more information.
+- [ ] Review the [Frequently Asked Questions (FAQ)](https://github.com/spectrocloud/docusaurus-versioning-template) for more information.
