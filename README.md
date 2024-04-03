@@ -55,7 +55,7 @@ To exit the container, issue the command `exit` or press `Ctrl + C`.
 
 To create a new version, use the git command `git checkout -b <name-of-branch>`. This will create a new branch and switch to it. Once you are inside the new version branch, start making changes and commit them.
 
-We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](./scripts/versions.sh) script to reflect the new pattern.
+We recommend you settle on a naming pattern for your version branches. This example repository uses the pattern `version-<version-number>`. For example, `version-1-1`. If you go with a different pattern, update the [versions.sh](https://github.com/spectrocloud/docusaurus-versioning-template/blob/main/scripts/versions.sh) script to reflect the new pattern.
 
 ## Frequently Asked Questions (FAQ)
 
