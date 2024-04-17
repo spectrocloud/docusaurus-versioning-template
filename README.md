@@ -2,12 +2,12 @@
 
 # Docusaurus Versioning with Git - Template
 
-This is a template for a Docusaurus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_]() to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
+This is a template for a Docusaurus site that uses Git for versioning. We recommend you read the blog post [_When Docs and a Dinosaur Git Along_](https://www.spectrocloud.com/blog/when-docs-and-a-dinosaur-git-along-enabling-versioning-in-docusaurus) to understand the motivation behind this template and why we at Spectro Cloud chose to use Git for versioning.
 
 Additionally, we recommend you start the local development server and read the Versioning Tips & Tricks section to learn more about this versioning approach. We have also included a [FAQ section](#frequently-asked-questions-faq) to address common questions and issues.
 
 <p align="center">
-  <img src="./static/img/readme-image.png" alt="docusaurus + heart with Spectro Cloud Astronaut + git" width="400"/>
+  <img src="./static/img/project.png" alt="docusaurus + heart with Spectro Cloud Astronaut + git" width="400"/>
 </p>
 
 > [!IMPORTANT]
