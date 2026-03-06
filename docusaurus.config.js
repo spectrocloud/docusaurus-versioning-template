@@ -26,7 +26,24 @@ const config = {
   projectName: "docusaurus", // Usually your repo name.
 
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: "throw",
+      onBrokenMarkdownImages: "throw",
+    },
+  },
+
+  future: {
+    v4: true,
+    experimental_faster: {
+      swcJsLoader: true, // Use SWC for JS/TS (faster than Babel)
+      swcJsMinimizer: true, // Faster JS minification in production
+      swcHtmlMinimizer: true, // Faster HTML minification in production
+      lightningCssMinimizer: true, // Faster CSS processing
+      rspackBundler: true, // Use Rspack
+      mdxCrossCompilerCache: true, // Disabled - causes HMR race condition crashes during hot reload
+    },
+  },
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
@@ -87,7 +104,7 @@ const config = {
                 ([versionName, versionUrl]) => ({
                   href: versionUrl,
                   label: versionName,
-                })
+                }),
               ),
             ],
           },
